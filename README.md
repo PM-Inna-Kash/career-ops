@@ -75,6 +75,7 @@ This fork is maintained by **Inna Kashtanova**, an Operational Architect and Sen
 | **Smart PDF Gen** | ATS-optimized CVs generated in seconds via Playwright |
 | **Batch Processing** | Parallel evaluation of multiple offers via sub-agents |
 | **Dashboard TUI** | Terminal UI to browse and sort your application pipeline |
+| **Efficiency Auditor** | Real-time tracking of token savings and context optimization log. |
 
 ## Project Structure
 

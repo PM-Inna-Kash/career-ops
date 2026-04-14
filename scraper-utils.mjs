@@ -10,6 +10,7 @@
  */
 
 import { fileURLToPath } from 'url';
+import { recordStats } from './utils/token-stats.mjs';
 
 export function sanitizeJobHTML(rawHTML) {
   return rawHTML
@@ -36,7 +37,15 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
-    process.stdout.write(sanitizeJobHTML(html) + '\n');
+    const sanitized = sanitizeJobHTML(html);
+
+    const report = await recordStats(html.length, sanitized.length);
+    process.stderr.write(
+      `Operational Efficiency: ${report.run.reductionPercent}% tokens saved ` +
+      `(${report.run.originalTokens.toLocaleString()} → ${report.run.sanitizedTokens.toLocaleString()} tokens)\n`
+    );
+
+    process.stdout.write(sanitized + '\n');
   } catch (err) {
     process.stderr.write(`scraper-utils: ${err.message}\n`);
     process.exit(1);
