@@ -1,0 +1,47 @@
+[
+  {
+    "timestamp": "2026-04-14T22:12:12.649Z",
+    "originalChars": 15000,
+    "sanitizedChars": 600,
+    "originalTokens": 3750,
+    "sanitizedTokens": 150,
+    "tokensSaved": 3600,
+    "reductionPercent": 96
+  },
+  {
+    "timestamp": "2026-04-14T22:12:12.770Z",
+    "originalChars": 48000,
+    "sanitizedChars": 1200,
+    "originalTokens": 12000,
+    "sanitizedTokens": 300,
+    "tokensSaved": 11700,
+    "reductionPercent": 98
+  },
+  {
+    "timestamp": "2026-04-14T22:12:44.826Z",
+    "originalChars": 528,
+    "sanitizedChars": 142,
+    "originalTokens": 132,
+    "sanitizedTokens": 36,
+    "tokensSaved": 96,
+    "reductionPercent": 73
+  },
+  {
+    "timestamp": "2026-04-14T22:19:06.217Z",
+    "originalChars": 120443,
+    "sanitizedChars": 6000,
+    "originalTokens": 30111,
+    "sanitizedTokens": 1500,
+    "tokensSaved": 28611,
+    "reductionPercent": 95
+  },
+  {
+    "timestamp": "2026-04-14T22:21:56.242Z",
+    "originalChars": 120443,
+    "sanitizedChars": 6000,
+    "originalTokens": 30111,
+    "sanitizedTokens": 1500,
+    "tokensSaved": 28611,
+    "reductionPercent": 95
+  }
+]

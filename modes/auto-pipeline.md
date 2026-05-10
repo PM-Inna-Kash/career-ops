@@ -2,7 +2,9 @@
 
 Cuando el usuario pega un JD (texto o URL) sin sub-comando explícito, ejecutar TODO el pipeline en secuencia:
 
-## Paso 0 — Extraer JD
+## Paso 0 — Extraer y Sanitizar JD
+
+### 0a — Extracción
 
 Si el input es una **URL** (no texto de JD pegado), seguir esta estrategia para extraer el contenido:
 
@@ -15,6 +17,23 @@ Si el input es una **URL** (no texto de JD pegado), seguir esta estrategia para 
 **Si ningún método funciona:** Pedir al candidato que pegue el JD manualmente o comparta un screenshot.
 
 **Si el input es texto de JD** (no URL): usar directamente, sin necesidad de fetch.
+
+### 0b — Sanitización de HTML (OBLIGATORIO si el input es URL o HTML crudo)
+
+**Antes de pasar al análisis, siempre sanitizar el JD con `scraper-utils.mjs`.**
+
+Ejecutar via Bash:
+```bash
+node scraper-utils.mjs <url>
+```
+
+- Elimina `<script>`, `<style>`, `<nav>`, `<footer>` y etiquetas HTML sobrantes
+- Trunca a 6.000 caracteres de señal pura (equivalente a ~300–500 tokens)
+- **Reducción típica: 90–96% de tokens** (de 15k–50k tokens de HTML a ~500 de señal)
+
+**Todo el análisis A-G usa el output del sanitizador como contexto principal, no el HTML original.**
+
+Si el input ya es texto plano o Markdown: usar directamente, omitir este paso.
 
 ## Paso 1 — Evaluación A-G
 Ejecutar exactamente igual que el modo `oferta` (leer `modes/oferta.md` para todos los bloques A-F + Block G Posting Legitimacy).

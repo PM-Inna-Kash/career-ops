@@ -2,6 +2,17 @@
 
 Cuando el candidato pega una oferta (texto o URL), entregar SIEMPRE los 7 bloques (A-F evaluation + G legitimacy):
 
+## Paso -1 — Sanitización del JD (OBLIGATORIO antes de cualquier análisis)
+
+**Antes de evaluar, siempre sanear el HTML del JD para eliminar ruido de tokens.**
+
+- Si el input es una **URL**: ejecutar `node scraper-utils.mjs <url>` mediante Bash. El resultado es el JD limpio.
+- Si el input es **HTML pegado directamente**: ejecutar `echo '<html>' | node -e "import('./scraper-utils.mjs').then(m => { let d=''; process.stdin.on('data',c=>d+=c); process.stdin.on('end',()=>process.stdout.write(m.sanitizeJobHTML(d))); })"` — o pedirle al usuario que pegue el texto plano.
+- Si el input ya es **texto plano / Markdown**: usar directamente, sin sanitización.
+
+**Resultado esperado:** texto limpio de 300–800 tokens (vs. 15k–50k tokens de HTML crudo).  
+**Todo el análisis A-G se realiza sobre este texto sanitizado, no sobre el HTML original.**
+
 ## Paso 0 — Detección de Arquetipo
 
 Clasificar la oferta en uno de los 6 arquetipos (ver `_shared.md`). Si es híbrido, indicar los 2 más cercanos. Esto determina:
