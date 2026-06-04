@@ -1,7 +1,5 @@
 # Career-Ops: AI-Powered Job Search Orchestration (Optimized Fork)
 
-[English](README.md) | [Русский](README.ru.md) | [Español](README.es.md)
-
 <p align="center">
   <img src="docs/hero-banner.jpg" alt="Career-Ops — Multi-Agent Job Search System" width="800">
 </p>
